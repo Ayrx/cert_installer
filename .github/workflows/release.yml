@@ -48,3 +48,25 @@ jobs:
           asset_path: target/arm-unknown-linux-musleabi/release/cert_installer
           asset_name: cert_installer_armv6
           asset_content_type: application/octet-stream
+
+  upload_ca:
+    name: Upload CA cert and key
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: certs/ca_cert.der
+          asset_name: ca_cert.der
+          asset_content_type: application/octet-stream
+      - uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: certs/ca_key.der
+          asset_name: ca_key.der
+          asset_content_type: application/octet-stream
