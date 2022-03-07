@@ -12,6 +12,11 @@ hex = "0.4.3"
 md-5 = "0.10.1"
 x509-parser = "0.13.0"
 
+[build-dependencies]
+hex = "0.4.3"
+md-5 = "0.10.1"
+x509-parser = "0.13.0"
+
 [profile.release]
 strip = true
 opt-level ="z"
