@@ -1,5 +1,5 @@
-use std::env;
 use md5::{Digest, Md5};
+use std::env;
 use std::fs;
 use std::path::Path;
 use x509_parser::prelude::*;
@@ -13,8 +13,9 @@ fn main() {
 
     fs::write(
         &dest_path,
-        format!("const SUBJECT_HASH: &str = \"{}\";", hash)
-    ).unwrap();
+        format!("const SUBJECT_HASH: &str = \"{}\";", hash),
+    )
+    .unwrap();
 
     println!("cargo:rerun-if-changed=certs/ca_cert.der");
 }
